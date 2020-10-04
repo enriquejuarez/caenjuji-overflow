@@ -9,10 +9,6 @@ import {User} from '../auth/user.model';
     templateUrl: './answer-form.component.html',
     styles: [`
         form{
-            display: flex;
-            flex-direction: column;
-            width: 90%;
-            margin: 40px auto;
             margin-top: 20px;
         }
     `]
