@@ -12,9 +12,7 @@ import { MomentModule } from 'angular2-moment';
 import {AnswerFormComponent} from './answer/answer-form.component';
 import {SigninScreenComponent} from './auth/signin-screen.component';
 import {SingupScreenComponent} from './auth/singup-screen.component';
-
-
-
+import {QuestionListComponent} from './question/question-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +20,8 @@ import {SingupScreenComponent} from './auth/singup-screen.component';
     QuestionDetailComponent,
     AnswerFormComponent,
     SigninScreenComponent,
-    SingupScreenComponent
+    SingupScreenComponent,
+    QuestionListComponent
   ],
   imports: [
     BrowserModule,
