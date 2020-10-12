@@ -13,6 +13,7 @@ import {User} from '../auth/user.model';
         }
     `]
 })
+
 export class AnswerFormComponent{
     @Input() question: Question;
     onSubmit(form: NgForm){

@@ -17,6 +17,7 @@ import icons from './icons';
 })
 export class QuestionFormComponent{
     icons: Object[] = icons;
+    
     getIconVersion(icon: any){
         let version;
       if (icon.versions.font.includes('plain-wordmark')) {

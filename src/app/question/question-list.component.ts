@@ -10,7 +10,15 @@ const q = new Question(
 
 @Component({
     selector: 'app-question-list',
-    templateUrl: 'question-list.component.html',
+    templateUrl: './question-list.component.html',
+    styles: [`
+        .add-question{
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-size: 32px;
+        }
+    `]
   
 })
 export class QuestionListComponent{
