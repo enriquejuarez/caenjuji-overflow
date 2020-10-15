@@ -1,14 +1,17 @@
-<mat-list>
-  <div mat-subheader>Preguntas</div>
-    <mat-list-item *ngFor="let question of questions" [routerLink]="['questions', question._id]">
-      <i *ngIf="question.icon === 'none'" mat-list-icon class="material-icons">help</i>
-      <i *ngIf="question.icon !== 'none'" mat-list-icon class="material-icons {{question.icon}}"></i>
-      <!-- <mat-icon *ngIf="question.icon === 'none'" mat-list-icon class="help">help</mat-icon>
-      <mat-icon *ngIf="question.icon !== 'none'" mat-list-icon class="help">{{question.icon}}</mat-icon> -->
-      <h3 mat-line>{{question.title}}</h3>
-      <p mat-line>
-        <small>{{question.answers.length}} respuestas - {{question.createdAt | amLocale: 'es' | amTimeAgo}}</small>
-      </p>
-  </mat-list-item>
-</mat-list> 
-<button [routerLink]="['questions/new']" mat-fab color="accent" class="add-question">+</button>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading">
+  <mat-list>
+    <div mat-subheader>Preguntas</div>
+      <mat-list-item *ngFor="let question of questions" [routerLink]="['questions', question._id]">
+        <i *ngIf="question.icon === 'none'" mat-list-icon class="material-icons">help</i>
+        <i *ngIf="question.icon !== 'none'" mat-list-icon class="material-icons {{question.icon}}"></i>
+        <!-- <mat-icon *ngIf="question.icon === 'none'" mat-list-icon class="help">help</mat-icon>
+        <mat-icon *ngIf="question.icon !== 'none'" mat-list-icon class="help">{{question.icon}}</mat-icon> -->
+        <h3 mat-line>{{question.title}}</h3>
+        <p mat-line>
+          <small>{{question?.answers?.length}} respuestas - {{question.createdAt | amLocale: 'es' | amTimeAgo}}</small>
+        </p>
+    </mat-list-item>
+  </mat-list> 
+  <button [routerLink]="['questions/new']" mat-fab color="accent" class="add-question">+</button>
+</div>

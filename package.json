@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "set DEBUG=caenjuji-overflow* & nodemon server/index.js --exec babel-node",
+    "start:server": "set NODE_ENV=development& set DEBUG=caenjuji-overflow* & nodemon server/index.js --exec babel-node",
     "start:client": "ng serve"
   },
   "private": true,
@@ -29,8 +29,10 @@
     "express": "^4.17.1",
     "hammerjs": "^2.0.8",
     "nodemon": "^2.0.5",
-    "rxjs": "~6.6.0",
+    "rxjs": "^6.6.3",
+    "rxjs-compat": "^6.6.3",
     "tslib": "^2.0.0",
+    "url-join": "^4.0.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

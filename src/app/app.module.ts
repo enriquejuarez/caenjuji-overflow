@@ -15,6 +15,7 @@ import {SingupScreenComponent} from './auth/singup-screen.component';
 import {QuestionListComponent} from './question/question-list.component';
 import {QuestionFormComponent} from './question/question-form.component';
 import {Routing} from './app.routing'
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {Routing} from './app.routing'
     MomentModule,
     FormsModule,
     ReactiveFormsModule,
-    Routing
+    Routing,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
