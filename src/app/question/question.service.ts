@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
+import { Answer } from '../answer/answer.model';
 
 
 
@@ -19,6 +20,7 @@ export class QuestionService{
   }
 
   getQuestions(): Promise<void | Question[]>{
+    // console.log('Questions');
     return this.http.get(this.questionsUrl)
            .toPromise()
            .then(response => response as Question[])
@@ -36,17 +38,20 @@ export class QuestionService{
 
   addQuestion(question: Question){
     const body = JSON.stringify(question);
-    const headers = new HttpHeaders({'Content-Type:': 'application/json'});
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-    // return this.http.post(this.questionsUrl, body, {headers})
-    //   .pipe(
-    //     map( res => {
-    //           return res as Question 
-    //         }),
-    //         catchError((error: Response) => Observable.throw(error))
-    //   );
+    return this.http.post(this.questionsUrl, body, { headers })
+      .pipe(map( (response: Response) => response)
+      ,catchError( (error: Response) => Observable.throw(error)));
+  }
 
-      return this.http.post(this.questionsUrl, body, { headers })
+  addAnswer(answer: Answer){
+    console.log('service' + JSON.stringify(answer));
+    const body = JSON.stringify(answer);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const url = urljoin(this.questionsUrl, answer.question._id.toString(), 'answers');
+
+    return this.http.post(url, body, { headers })
       .pipe(map( (response: Response) => response)
       ,catchError( (error: Response) => Observable.throw(error)));
   }
