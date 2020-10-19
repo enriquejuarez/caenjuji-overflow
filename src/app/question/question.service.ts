@@ -20,7 +20,6 @@ export class QuestionService{
   }
 
   getQuestions(): Promise<void | Question[]>{
-    // console.log('Questions');
     return this.http.get(this.questionsUrl)
            .toPromise()
            .then(response => response as Question[])
@@ -46,8 +45,13 @@ export class QuestionService{
   }
 
   addAnswer(answer: Answer){
-    console.log('service' + JSON.stringify(answer));
-    const body = JSON.stringify(answer);
+    const a = {
+      description: answer.description,
+      question: {
+        _id: answer.question._id
+      }
+    }
+    const body = JSON.stringify(a);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     const url = urljoin(this.questionsUrl, answer.question._id.toString(), 'answers');
 

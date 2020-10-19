@@ -20,6 +20,7 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(){
+    console.log('ngOnInit question detail');
     this.sub = this.route.params.subscribe((params) => {
       this.questionService
       .getQuestion(params.id)
@@ -31,7 +32,7 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.sub.unsbscribe();
+    this.sub.unsubscribe();
   }
 
 }

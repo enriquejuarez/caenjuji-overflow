@@ -10,12 +10,8 @@ const currentUser = {
 }
 
 function questionMiddleware(req, res, next){
-  console.log('questionMiddleware')
   const id = req.params.id
-  console.log('Id: ' + id)
-  console.log('aaray' + questions)
   req.q = questions.find(({_id}) => _id === +id)
-  console.log('respuesta encontrada:' + req.q)
   next()
 }
 
@@ -43,7 +39,6 @@ const questions = new Array(10).fill(question)
 
 //GET /api/questions
 app.get('/', (req, res) => {
-  console.log('get')
   setTimeout(() => {
     res.status(200).json(questions)
   }, 2000);
@@ -62,14 +57,12 @@ app.post('/', userMiddleware, (req, res) => {
   q.createdAt = new Date()
   q.answers = []
   questions.push(q)
-  console.log('agregar pregunta' + questions)
   res.status(201).json(q)
 })
 
 app.post('/:id/answers', questionMiddleware, userMiddleware, (req, res) => {
 
   const answer = req.body
-  console.log('Respuesta server →' + answer);
   const q = req.q
   answer.createdAt = new Date()
   answer.user = req.user
